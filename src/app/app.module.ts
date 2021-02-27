@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import 'hammerjs';
 import { DishService } from './services/dish.service';
-
+import { PromotionService } from './services/promotion.service';
 import { MenuComponent } from './menu/menu.component';
 import { MatListModule } from '@angular/material/list';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
@@ -46,7 +46,7 @@ import { ContactComponent } from './contact/contact.component';
     MatButtonModule
 
   ],
-  providers: [DishService],
+  providers: [DishService, PromotionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
