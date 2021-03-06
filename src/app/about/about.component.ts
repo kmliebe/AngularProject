@@ -3,7 +3,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Leader } from '../Shared/leader';
 import { LeaderService } from '../services/leader.service';
-import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-about',
