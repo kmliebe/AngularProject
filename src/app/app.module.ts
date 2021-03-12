@@ -39,7 +39,7 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    MatDialogModule
+    
   ],
   imports: [
     BrowserModule,
@@ -50,7 +50,8 @@ import { LoginComponent } from './login/login.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
 
   ],
   entryComponents: [
