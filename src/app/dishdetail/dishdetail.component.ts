@@ -16,7 +16,21 @@ import { Feedback } from '../shared/feedback';
 })
 export class DishdetailComponent implements OnInit {
 @Input()
-  
+
+formErrors = {
+  'author': '',
+  'comment': ''
+};
+
+validationMessages = {
+  'author': {
+    'required': 'Name is requited.',
+    'minlength': 'Name must be at least 2 characters long.'
+  },
+  'comment': {
+    'required': 'Comment is requited.'
+  }
+}
   feedbackForm: FormGroup;
   feedback: Feedback;
 comment: Comment;
@@ -52,11 +66,36 @@ comment: Comment;
    this.location.back();
  }
 
- createForm() {
+ createForm(): void {
    this.feedbackForm = this.fb.group({
-     author: '',
+    author: ['', [Validators.required, Validators.minLength(2)]],
      rating: '',
-     comment: ''
+     comment: ['', Validators.required]
    });
+   this.feedbackForm.valueChanges
+   .subscribe(data => this.onValueChanged(data));
+
+ this.onValueChanged();
+
  }
+ onValueChanged(data?: any) {
+  if (!this.feedbackForm) { return; }
+  const form = this.feedbackForm;
+  for (const field in this.formErrors) {
+    if (this.formErrors.hasOwnProperty(field)) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          if (control.errors.hasOwnProperty(key)) {
+            this.formErrors[field] += messages[key] + ' ';
+          }
+        }
+      }
+    }
+  }
+}
+
 }

@@ -46,22 +46,21 @@
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="full-width">
-          <input matInput formControlName="author" placeholder="Name" type="text">
+          <input matInput formControlName="author" placeholder="Name" type="text" required>
+          <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
         </mat-form-field>
       </p>
       <table class="form-size">
-        <!-- <td>
-          <mat-slide-toggle formControlName="rating">Rating</mat-slide-toggle>
-        </td> -->
         <p>Rating</p>
         <mat-slider min="0" max="5" step="1" thumbLabel tickInterval="1"></mat-slider>
       </table>
       <p>
         <mat-form-field class="full-width">
-          <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12></textarea>
+          <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12 required></textarea>
+          <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
         </mat-form-field>
       </p>
-      <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
   </div>
   <div [hidden]="dish">
