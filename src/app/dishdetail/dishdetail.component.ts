@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Dish } from '../shared/dish';
@@ -14,8 +14,10 @@ import { Feedback } from '../shared/feedback';
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss']
 })
+
+
 export class DishdetailComponent implements OnInit {
-@Input()
+@ViewChild('fform') feedbackFormDirective;
 
 formErrors = {
   'author': '',
@@ -33,7 +35,9 @@ validationMessages = {
 }
   feedbackForm: FormGroup;
   feedback: Feedback;
-comment: Comment;
+  comment: Comment;
+
+
   dish: Dish;
   dishIds: string[];
   prev: string;
@@ -69,7 +73,7 @@ comment: Comment;
  createForm(): void {
    this.feedbackForm = this.fb.group({
     author: ['', [Validators.required, Validators.minLength(2)]],
-     rating: '',
+     rating: '5',
      comment: ['', Validators.required]
    });
    this.feedbackForm.valueChanges
@@ -97,5 +101,22 @@ comment: Comment;
     }
   }
 }
+onSubmit() {
+  this.comment = this.feedbackForm.value;
+  const date = new Date(); 
+  this.comment.date = date.toISOString();
+  
+  this.dish.comments.push(this.comment);
+
+  console.log(this.feedback);
+  this.feedbackForm.reset({
+    author: '',
+    rating: '5',
+    comment: ''
+  });
+  this.feedbackFormDirective.resetForm();
+
+}
+
 
 }
