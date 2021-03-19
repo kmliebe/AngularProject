@@ -48,12 +48,12 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  createForm() {
+  createForm(): void {
     this.feedbackForm = this.fb.group({
-      firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      telnum: [0, [Validators.required, Validators.pattern]],
-      email: ['', [Validators.required, Validators.email]],
+      firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
+      lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
+      telnum: ['', [Validators.required, Validators.pattern] ],
+      email: ['', [Validators.required, Validators.email] ],
       agree: false,
       contacttype: 'None',
       message: ''
