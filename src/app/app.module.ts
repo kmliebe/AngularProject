@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule} from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
