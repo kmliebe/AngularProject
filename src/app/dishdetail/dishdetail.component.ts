@@ -50,7 +50,7 @@ validationMessages = {
     private route: ActivatedRoute,
     private location: Location, 
     private fb: FormBuilder,
-    @Inject('BaseURL') private baseURL) { 
+    @Inject('BaseURL') public baseURL) { 
       this.createForm();
     }
 

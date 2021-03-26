@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(private dishservice: DishService,
     private promotionservice: PromotionService,
     private leaderService: LeaderService,
-    @Inject('BaseURL') private baseURL){ }
+    @Inject('BaseURL') public baseURL){ }
 
     ngOnInit() {
       this.dishservice.getFeaturedDish()
