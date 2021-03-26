@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Dish } from '../shared/dish';
+import { Dish } from '../Shared/dish';
 import { DishService } from '../services/dish.service';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Comment } from '../shared/comment';
-import { Feedback } from '../shared/feedback';
+import { Comment } from '../Shared/comment';
+import { Feedback } from '../Shared/feedback';
 
 
 @Component({
