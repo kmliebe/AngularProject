@@ -38,6 +38,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 
 import { baseURL } from './Shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { baseURL } from './Shared/baseurl';
     AboutComponent,
     ContactComponent,
     LoginComponent,
+    HighlightDirective,
     
   ],
   imports: [
