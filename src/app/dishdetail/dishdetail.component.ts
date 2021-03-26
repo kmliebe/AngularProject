@@ -17,7 +17,17 @@ import { Feedback } from '../Shared/feedback';
 
 
 export class DishdetailComponent implements OnInit {
-@ViewChild('fform') feedbackFormDirective;
+
+  dish: Dish;
+  dishIds: string[];
+  dishcopy: Dish;
+  prev: string;
+  next: string;
+  errMess: string;
+  @ViewChild('fform') feedbackFormDirective;
+  feedbackForm: FormGroup;
+  feedback: Feedback;
+  comment: Comment;
 
 formErrors = {
   'author': '',
@@ -33,17 +43,8 @@ validationMessages = {
     'required': 'Comment is requited.'
   }
 }
-  feedbackForm: FormGroup;
-  feedback: Feedback;
-  comment: Comment;
+  
 
-
-  dish: Dish;
-  dishIds: string[];
-  dishcopy: Dish;
-  prev: string;
-  next: string;
-  errMess: string;
 
 
   constructor(private dishService: DishService, 
@@ -51,15 +52,18 @@ validationMessages = {
     private location: Location, 
     private fb: FormBuilder,
     @Inject('BaseURL') public baseURL) { 
-      this.createForm();
+     
     }
 
   ngOnInit() {
+    this.createForm();
+
     this.dishService.getDishIds()
-      .subscribe((dishIds) => this.dishIds = dishIds);
-    this.route.params
+    .subscribe((dishIds) => this.dishIds = dishIds);   
+     
+   this.route.params
       .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-      .subscribe(dish =>  { this.dish = dish; this.dishcopy = dish;  this.setPrevNext(dish.id);  },
+      .subscribe(dish =>  { this.dish = dish;   this.setPrevNext(dish.id);  },
       errmess => this.errMess = <any>errmess );
   }
 
